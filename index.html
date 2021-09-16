@@ -1,6 +1,14 @@
 <html>
     <title>WebApps Assignment_03</title>
-    <head> </head>
+    <head> 
+        <style>
+            table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            }
+        </style>
+    </head>
     <body>
         <h1>KunalReddy Alluri</h1>
 
@@ -32,6 +40,89 @@
 </ul>
 
 <a href="aboutme.html ">aboutme file</a>
+
+<hr>
+
+<h3> Recommeneded Drinks</h3>
+
+The below table shows the recommended drinks and their available location and purchase value.
+
+<table>
+    <tr>
+    <th>Drinks</th>
+    <th>Location</th>
+    <th>Price(INR)</th>
+    </tr>
+    
+    <tr>
+        <td>Mango Lassi</td>
+        <td>Delhi</td>
+        <td>66</td>
+    </tr>
+    
+    <tr>
+    <td>ChocoShake</td>
+    <td>Sikkim</td>
+    <td>295</td>
+    </tr>
+    
+    <tr>
+    <td>Beer</td>
+    <td>Chennai</td>
+    <td>650</td>
+    </tr>
+    
+    <tr>
+    <td>Sprite</td>
+    <td>Goa</td>
+    <td>245</td>
+    </tr>
+    
+    </table>
+
+    <hr>
+
+    <h4> Graphs Spanning </h4>
+    <blockquote cite = "https://en.wikipedia.org/wiki/Spanning_tree">In the mathematical field of graph theory, a spanning tree T of an undirected graph G is a subgraph that is a tree which includes all of the vertices of G. In general, a graph may have several spanning trees, but a graph that is not connected will not contain a spanning tree..</blockquote>
+    <a href = "https://en.wikipedia.org/wiki/Spanning_tree"> Spanning Tree </a>
+    <pre>
+    
+        truct Edge {
+            int u, v, weight;
+            bool operator<(Edge const& other) {
+                return weight < other.weight;
+            }
+        };
+        
+        int n;
+        vector<Edge> edges;
+        
+        int cost = 0;
+        vector<int> tree_id(n);
+        vector<Edge> result;
+        for (int i = 0; i < n; i++)
+            tree_id[i] = i;
+        
+        sort(edges.begin(), edges.end());
+        
+        for (Edge e : edges) {
+            if (tree_id[e.u] != tree_id[e.v]) {
+                cost += e.weight;
+                result.push_back(e);
+        
+                int old_id = tree_id[e.u], new_id = tree_id[e.v];
+                for (int i = 0; i < n; i++) {
+                    if (tree_id[i] == old_id)
+                        tree_id[i] = new_id;
+                }
+            }
+        }
+    
+    
+    
+    
+    </pre>
+    
 
     </body>
 </html>
